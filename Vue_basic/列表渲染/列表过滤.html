@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="root">
+      <h2>列表</h2>
+      <input type="text" placeholder="请输入名字" v-model="keyWord" />
+      <ul>
+        <li v-for="(p, index) of filPersons" :key="p.id">
+          {{p.id}}-{{p.name}}-{{p.sex}}-{{p.number}}
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const v = new Vue({
+      el: "#root",
+      data: {
+        keyWord: "",
+        personArr: [
+          {
+            id: "1",
+            name: "马冬梅",
+            sex: "man",
+            number: "123456",
+          },
+          {
+            id: "2",
+            name: "周冬雨",
+            sex: "woman",
+            number: "1234656",  
+          },
+          {
+            id: "3",
+            name: "周杰伦",
+            sex: "man",
+            number: "1234567",
+          },
+          {
+            id: "4",
+            name: "黑加伦",
+            sex: "man",
+            number: "1234567",
+          },
+        ],
+        // filPersons:[],
+      },
+      // watch:{
+      //   keyWord:{
+      //     immediate:true,
+      //     handler(val){
+      //       this.filPersons = this.personArr.filter((p)=>{
+      //         return p.name.indexOf(val) !== -1
+      //       })
+      //     }
+      //   },
+      // },
+      computed: {
+        filPersons(){
+          return this.personArr.filter((p)=>{
+            return p.name.indexOf(this.keyWord) !== -1;
+          })
+        }
+      }
+    });
+  </script>
+</html>

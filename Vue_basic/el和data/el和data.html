@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../JS/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+       
+      <h1>你好{{name}}</h1>
+    </div>
+   
+</body>
+<script type="text/javascript">
+    /*el的两种写法
+    const v = new Vue({
+        //el:'root',//一种写法
+        data:{
+            name:'上海'
+        }
+    })
+    v.$mount('#root')//第二种写法
+    */
+    //data的两种写法
+    new Vue({
+        el:'#root',
+        //data的第一种 对象式
+        /*data:{
+            name:'上海'
+        }*/
+        //data 第二种写法 函数式
+        /*data:function(){*/
+        data(){ //箭头函数指向全局中，普通函数有this指向VUE实例对象
+            console.log('@@',this);
+            return {
+                name:'上海'
+            }
+        }
+    })
+
+</script>
+</html>

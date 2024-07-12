@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="root">
+      <ul>
+        <!-- <li v-for="p in personArr" key="p.name">{{p.name}}-{{p.sex}}-{{p.number}}</li> -->
+        <li v-for="(p,index) in personArr" :key="index">{{p.name}}-{{p.sex}}-{{p.number}}</li>
+        <!-- v-for="(value,key)" 先拿到值，再拿到关键字-->
+      </ul>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const v = new Vue({
+      el: "#root",
+      data: {
+        personArr: [
+          {
+            name: "zhangSan",
+            sex: "man",
+            number: "123456",
+          },
+          {
+            name: "lisi",
+            sex: "woman",
+            number: "1234656",
+          },
+          {
+            name: "wangwu",
+            sex: "man",
+            number: "1234567",
+          },
+        ],
+      },
+    });
+  </script>
+</html>

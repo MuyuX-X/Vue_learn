@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <app></app>
+      <hello></hello>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const xiaowang = {
+      template: `
+      <div>
+        <h2>姓名：{{xiaowang}}</h2>
+        账号：<input type="text">
+        密码：<input type="text">
+      </div>
+    `,
+      data() {
+        return {
+          xiaowang: "小王",
+        };
+      },
+    };
+
+    const xiaohei = {
+      template: `
+    <div>
+      <h2>姓名：{{xiaohei}}</h2>
+      账号：<input type="text">
+      密码：<input type="text">
+      <tr></tr>
+      <xiaowang></xiaowang>
+    </div>
+    `,
+      data() {
+        return {
+          xiaohei: "小黑",
+        };
+      },
+      //注册组件，局部
+      components: {
+        xiaowang,
+      },
+    };
+
+    const hello = {
+      template: `
+      <h1>{{msg}}</h1>
+      `,
+      data() {
+        return {
+          msg: "欢迎",
+        };
+      },
+    };
+
+    const app = {
+      template: `
+    <div>
+      <xiaohei></xiaohei>
+    </div>
+      `,
+      components: {
+        xiaohei,
+      },
+    };
+
+    new Vue({
+      el: "#root",
+      components: {
+        app,
+        hello,
+      },
+    });
+  </script>
+</html>

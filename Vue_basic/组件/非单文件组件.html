@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <hello></hello>  
+      <schools></schools>
+      <hr/>
+      <students></student>  
+    </div>
+  </body>
+  <script type="text/javascript">
+    // 创建school组件
+    const school = Vue.extend({
+      template: `
+        <div>
+          <h2>学校{{schoolName}}</h2>
+          <h2>学校地址{{address}}</h2>
+        </div>
+      `,
+      // el: "#root",一定不要写el配置项，因为最终所有组件都被实例管理，由实例决定(vm)
+      data() {
+        return {
+          schoolName: "邮电",
+          address: "上海",
+        };
+      },
+    });
+    const student = Vue.extend({
+      template: `
+        <div>
+          <h2>学生{{studentName}}</h2>
+          <h2>学生年龄{{age}}</h2>
+        </div>
+      `,
+      data() {
+        return {
+          studentName: "肖四",
+          age: 16,
+        };
+      },
+    });
+    const hello = Vue.extend({
+      template: `
+        <div>
+          <h2>{{niHao}}你好</h2>
+        </div>
+      `,
+      data() {
+        return {
+          niHao: "肖四",
+        };
+      },
+    });
+    // 全局注册组件
+    Vue.component('hello',hello)
+    new Vue({
+      el: "#root",
+      // 组件注册完毕:局部注册
+      components: {
+        schools: school,
+        // 简写：school
+        students: student,
+      },
+    });
+  </script>
+</html>

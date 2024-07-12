@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6_1</title>
+    <script type="text/javascript" src="../JS/vue.js"></script>
+  </head>
+  <body>
+    <!-- Vue模板语法有两大类：
+    1.插值语法
+      功能：用于解析标签体内容
+      写法：{{xxx}}.   xxx是JS表达式，且可以直接读取到data中的所有属性
+    2.指令语法：
+      功能：用于解析标签（标签属性、标签体内容、绑定事件）
+     -->
+    <!-- 容器 -->
+    <div id="root">
+      <!-- 插值语法 -->
+      <h1>Hello，{{name}}</h1>
+      <!-- 写成JS表达式 -->
+      <h1>我的年龄，{{name}}</h1>
+      <a v-bind:href="school.url">点我{{school.sex}}去学习</a>
+      <a :href="url">{{school.url}}</a>
+      <!-- 简写为： -->
+      <!-- 绑定，变成url表达式 -->
+      <a href=" "></a>
+    </div>
+    <script type="text/javascript">
+      //创建Vue实例
+      Vue.config.productionTip = false;
+      new Vue({
+        el: "#root", //指定当前Vue实例为哪个容器服务，通常为CSS选择器
+        data: {
+          //data 中用于存储数据，数据供el指定使用,值先写成一个对象
+          name: "上海12a",
+          school: {
+            sex: "男",
+            url: "http://www.baidu.com/",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

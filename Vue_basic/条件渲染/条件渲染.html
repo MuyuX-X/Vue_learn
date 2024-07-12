@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+    <style>
+      .basic {
+        weight: 20px;
+        height: 60px;
+        border: solid 1px;
+      }
+      .normal {
+        background-color: #666;
+      }
+      .happy {
+        background-color: red;
+      }
+      .sad {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- v-show 布尔值  为false只是隐藏  -->
+      <!-- v-if 布尔值  为false删去了-->
+      <template>
+        <h2 v-show="a">欢迎来了来</h2>
+        <h2 v-if="a">欢迎来了来</h2>
+        <h2 v-else-if="a">欢迎来了来</h2>
+      </template>
+      
+
+     
+    </div>
+  </body>
+  <script type="text/javascript">
+    const v = new Vue({
+      el: "#root",
+      data: {
+        name: "上海",
+        mood: "normal",
+        a:'true'
+      
+        },
+        
+      },
+     
+    );
+  </script>
+</html>

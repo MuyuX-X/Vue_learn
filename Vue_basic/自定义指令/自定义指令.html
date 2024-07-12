@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <button @click="n++">点我+1</button>
+      <input type="text" v-fbind:value="n">
+    </div>
+  </body>
+  <script type="text/javascript">
+    const v = new Vue({
+      el: "#root",
+      data: {
+        n: 1,
+      },
+      // big函数：指令与元素成功绑定时，指令所在的模板呗重新解析时
+      directives: {
+        fbind:{
+          // 指令与元素成功绑定时
+          // element为元素  binding为v-fbind
+         bind(element, binding){
+          element.value= binding.value;  
+          // 此处的this是window
+         },
+        //  指令所在元素呗插入页面时
+         inserted(element, binding){
+          element.focus();
+         },
+        //  指令所在的模板被重新解析时
+         update(element, binding){
+          element.value= binding.value;
+         }
+        }
+      },
+    });
+  </script>
+</html>

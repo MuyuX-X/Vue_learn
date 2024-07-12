@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Vue常用的按键别名
+      回车：enter
+      删除：delete 
+      退出：esc
+      空格：space
+      换行：tab
+      上：up
+      下：down
+      左：left
+      右：right
+      未提供别名的，用原始key去绑定，要注意转为kebab-case（端横线命名）
+      系统修饰键（用法特殊）ctrl、alt、shift、meta
+      如 ctrl.y 是 按下Ctrl+y
+      常常配合 keyup  keydown
+      Vue.config.keyCodes.自定义键名 = 键码，可以定制按键别名
+   -->
+      <h2>欢迎来到{{name}}</h2>
+      <input type="text" placeholder="按下回车" @keyup.enter="showinfo">
+    </div>
+  </body>
+  <script type="text/javascript">
+    const v = new Vue({
+      el: "#root",
+      data: {
+        name: "上海",
+      },
+      method:{
+        showinfo(e){
+          // e.preventDefault();
+          console.log(e.target.value);
+          alert("你好");
+        },
+      
+      }
+     
+    });
+  </script>
+</html>

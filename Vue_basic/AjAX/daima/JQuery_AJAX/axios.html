@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>axios</title>
+    <script
+      crossorigin="anonymous"
+      src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.6/axios.js"
+    ></script>
+  </head>
+  <body>
+    <button>GET</button>
+    <button>POST</button>
+    <button>AJAX</button>
+
+    <script>
+      const btns = document.querySelectorAll("button");
+      //配置 baseURL
+      axios.defaults.baseURL = "http://127.0.0.1:8000";
+      btns[0].onclick = () => {
+        //GET请求
+        axios
+          .get("/axios-server", {
+            //url参数
+            params: {
+              id: 100,
+              vio: 7,
+            },
+            //请求头信息
+            headers: {
+              name: "guigu",
+              sex: "woman",
+            },
+          })
+          .then((value) => {
+            console.log(value);
+          });
+      };
+      btns[1].onclick = function () {
+        axios.post(
+          "/axios-server",
+          //请求体
+          {
+            username: "admin",
+            property: "admin",
+          },
+          {
+            //url参数
+            params: {
+              id: 100,
+              vio: 7,
+            },
+            //请求头
+            headers: {
+              name: "guigu",
+              sex: "woman",
+            },
+          }
+        );
+      };
+      btns[2].onclick = function (e) {
+        axios({
+            //请求犯法
+            method: 'POST',
+            url: '/axios-server',
+            params:{
+                vio: 10,
+                level :30
+            },
+            headers: {
+              name: "guigu",
+              sex: "woman",
+            },
+            data:{
+                username: 'admin',
+                password: 'addmin'
+            }
+            //处理返回结果
+        }).then(response=> {
+            console.log(response);
+            console.log(response.status);
+            console.log(response.statusText);
+            console.log(response.headers);
+            console.log(response.data);
+        });
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="root">
+     <h2>添加一个按钮</h2>
+     <button @click.once="add">添加一个黑子</button>
+      <ul>
+        <li v-for="(p, index) of personArr" :key="p.id">
+          
+          {{p.name}}-{{p.sex}}-{{p.number}}
+          <input type="text">
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const v = new Vue({
+      el: "#root",
+      data: {
+        personArr: [
+          {
+            id:'1',
+            name: "zhangSan",
+            sex: "man",
+            number: "123456",
+          },
+          {
+            id:'2',
+            name: "lisi",
+            sex: "woman",
+            number: "1234656", 
+          },
+          {
+            id:'3',
+            name: "wangwu",
+            sex: "man",
+            number: "1234567",
+          },
+        ],
+      },
+      methods: {
+        add(){
+          const p ={name:'heizi',sex:'woman',number:'999'}
+          this.personArr.unshift(p);
+        }
+      },
+    });
+  </script>
+</html>

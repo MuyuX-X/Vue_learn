@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <h2>当前b值{{n}}</h2>
+      <button @click="add">点我n+1</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+    new Vue({
+      el: "#root",
+      data: {
+        n: 1,
+      },
+      methods: {
+        add(){
+        this.n++
+      }
+      },
+      beforeCreate(){
+        console.log('beforeCreate');
+        console.log(this);
+        debugger;
+      },
+      created(){
+       
+      }
+
+      
+    });
+  </script>
+</html>

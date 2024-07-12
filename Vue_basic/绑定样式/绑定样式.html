@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+    <style>
+      .basic {
+        weight: 20px;
+        height: 60px;
+        border: solid 1px;
+      }
+      .normal {
+        background-color: #666;
+      }
+      .happy {
+        background-color: red;
+      }
+      .sad {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 绑定class样式--字符串写法，适用于，样式类名不确定，需要动态绑定 -->
+      <div class="basic" :class="mood" @click="changemood">{{name}}</div>
+      <br /><br />
+      <!-- 绑定class样式--数组写法，适用于：要绑定的样式个数不确定，名字也不确定 -->
+      <div class="basic" :class="classarr" @click="changemood">{{name}}</div>
+      <br />
+      <!-- 绑定class--对象写法，适用于，要绑定的样式个数不确定，名字也不确定 但要动态决定-->
+      <div class="basic" :class="classobj">{{name}}</div><br>
+      <div class="basic" :style="[styleObj1,styleObj2]">{{name}}</div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const v = new Vue({
+      el: "#root",
+      data: {
+        name: "上海",
+        mood: "normal",
+        classarr: ["normal", "happy", "sad"],
+        classobj: {
+          normal: true,
+          happy: false,
+          sad: false,
+        },
+        styleObj:{
+          fontSize:'40px',
+          color:'red'
+        }
+      },
+      methods: {
+        changemood() {
+          const arr = ["happy", "sad", "normal"];
+          const index = Math.floor(Math.random() * arr.length);
+          this.mood = arr[index];
+        },
+      },
+    });
+  </script>
+</html>

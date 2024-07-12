@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../JS/vue.js"></script>
+    <title>Document</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- v-pre
+    跳过其所在节点的编译过程
+    可利用他跳过，会加快编译 -->
+    <div id="root">
+      <h2 v-pre>初始化值</h2>
+      <h2 v-pre>当前值{{n}}</h2>
+      <button v-pre @click="n++">点我+1</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const v = new Vue({
+      el: "#root",
+      data: {
+        n: 1,
+      },
+    });
+  </script>
+</html>

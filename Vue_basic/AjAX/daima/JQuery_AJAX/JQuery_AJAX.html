@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery发送 AJAX请求</title>
+    <link crossorigin="anonymous" href="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">JQuery</h2>
+        <button class="btn btn-primary">GET</button>
+        <button class="btn btn-danger">POST</button>
+        <button class="btn btn-info">通用</button>
+    </div>
+    <script>
+        $('button').eq(0).click(function(){
+            $.get('http://127.0.0.1:8000/Jquery-server',{a:100,b:200},function(data){
+                console.log(data);
+            },'json');
+        });
+        $('button').eq(1).click(function(){
+            $.post('http://127.0.0.1:8000/Jquery-server',{a:100,b:200},function(data){
+                console.log(data);
+            });
+        });
+        $('button').eq(2).click(function(){
+            $.ajax({
+                url: 'http://127.0.0.1:8000/Jquery-server',
+                //参数
+                data :{ a:100,b:200},
+                //请求类型
+                type : 'GET',
+                //成功的回调
+                //响应体结果
+                dataType: 'json',
+                success : function(data){
+                    console.log(data);
+                },
+                error:function(){
+                    console.log('出错了');
+                },
+                headers:{
+                    c:300,
+                    d:4000
+                }
+            });
+        });
+    </script>
+</body>
+</html>
